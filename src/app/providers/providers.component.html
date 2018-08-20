@@ -1,0 +1,25 @@
+<div>
+  <nav class="navbar navbar-dark bg-primary" style="margin-bottom: 10px">
+    <div class="navbar navbar-brand">
+      PROVEEDORES
+    </div>
+  </nav>
+  <p-table [value]="providers">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Razón social</th>
+        <th>Direccion</th>
+        <th>Teléfono</th>
+        <th>e-Mail</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-provider>
+      <tr>
+        <td>{{provider.razon_social}}</td>
+        <td>{{provider.direccion}}</td>
+        <td>{{provider.telefono}}</td>
+        <td>{{provider.mail}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

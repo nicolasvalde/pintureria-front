@@ -1,0 +1,30 @@
+<nav class="navbar navbar-dark bg-primary" style="margin-bottom: 10px">
+  <div class="navbar navbar-brand">
+    NUEVO CLIENTE
+  </div>
+</nav>
+
+<div>
+  <div class="form-group">
+    <label for="nombre">Nombre del cliente</label>
+    <input [(ngModel)]="client.nombre" class="form-control" id="nombre" placeholder="">
+  </div>
+
+  <div class="form-group">
+    <label for="apellido">Apellido del cliente</label>
+    <input [(ngModel)]="client.apellido" class="form-control" id="apellido" placeholder="">
+  </div>
+
+  <div class="form-group">
+    <label for="telefono">Teléfono</label>
+    <input [(ngModel)]="client.telefono" class="form-control" id="telefono" placeholder="">
+  </div>
+
+  <div class="form-group">
+    <label for="mail">e-Mail</label>
+    <input [(ngModel)]="client.mail" class="form-control" id="mail" placeholder="">
+  </div>
+
+  <button (click)="saveClient()" class="btn btn-primary">Crear cliente</button>
+
+</div>

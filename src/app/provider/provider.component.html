@@ -1,0 +1,30 @@
+<nav class="navbar navbar-dark bg-primary" style="margin-bottom: 10px">
+  <div class="navbar navbar-brand">
+    NUEVO PROVEEDOR
+  </div>
+</nav>
+
+<div>
+  <div class="form-group">
+    <label for="razon_social">Razón social del proveedor</label>
+    <input [(ngModel)]="provider.razon_social" class="form-control" id="razon_social" placeholder="">
+  </div>
+
+  <div class="form-group">
+    <label for="direccion">Direccion</label>
+    <input [(ngModel)]="provider.direccion" class="form-control" id="direccion" placeholder="">
+  </div>
+
+  <div class="form-group">
+    <label for="telefono">Teléfono</label>
+    <input [(ngModel)]="provider.telefono" class="form-control" id="telefono" placeholder="">
+  </div>
+
+  <div class="form-group">
+    <label for="mail">e-Mail</label>
+    <input [(ngModel)]="provider.mail" class="form-control" id="mail" placeholder="">
+  </div>
+
+  <button (click)="saveProvider()" class="btn btn-primary">Crear proveedor</button>
+
+</div>
