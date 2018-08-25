@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductsService} from '../services/products.service';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {TableModule} from 'primeng/table';
 import {Product} from '../interfaces/product';
 
 @Component({
@@ -11,10 +9,17 @@ import {Product} from '../interfaces/product';
 })
 export class ProductsComponent implements OnInit {
 
-  // API_ENDPOINT = 'http://localhost:8000';
   products: Product[];
 
-  constructor(private productService: ProductsService, private httpClient: HttpClient) {
+  constructor(private productService: ProductsService) {
+    this.getProducts();
+  }
+
+  ngOnInit() {
+  }
+
+  // Muestra los productos
+  getProducts() {
     this.productService.get().subscribe((data: Product[]) => {
       this.products = data;
     }, (error) => {
@@ -23,7 +28,18 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  // Elimina un producto
+  delete(id) {
+    if (confirm('Desea eliminar este producto?')) {
+      this.productService.delete(id).subscribe(() => {
+        alert('Eliminado con éxito');
+        // Llama para actualizar los productos
+        this.getProducts();
+      }, (error) => {
+        console.log(error);
+        alert('Error');
+      });
+    }
   }
 
 }

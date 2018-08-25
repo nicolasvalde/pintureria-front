@@ -1,20 +1,26 @@
 <nav class="navbar navbar-dark bg-primary" style="margin-bottom: 10px">
   <div class="navbar navbar-brand">
-    NUEVO PRODUCTO
+    {{title}}
   </div>
 </nav>
 
-<div  >
+<div>
   <div class="form-group">
     <label for="nombre">Nombre del producto</label>
     <input [(ngModel)]="product.nombre" class="form-control" id="nombre" placeholder="">
   </div>
 
   <div class="form-group">
+    <label for="id_categoria">Categoría</label>
+    <app-categories [product]="product" [(ngModel)]="product.id_categoria" id="id_categoria"></app-categories>
+  </div>
+
+
+  <div class="form-group">
     <label for="descripcion">Descripción del producto (Opcional)</label>
     <textarea [(ngModel)]="product.descripcion" class="form-control" id="descripcion" rows="10"></textarea>
   </div>
 
-  <button (click)="saveProduct()" class="btn btn-primary">Crear producto</button>
+  <button (click)="saveProduct()" class="btn btn-primary">Guardar producto</button>
 
 </div>

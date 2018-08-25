@@ -12,7 +12,7 @@ export class ClientsComponent implements OnInit {
 
   clients: Client[];
 
-  constructor(private clientsService: ClientsService, private httpClient: HttpClient) {
+  constructor(private clientsService: ClientsService) {
     this.clientsService.get().subscribe((data: Client[]) => {
       this.clients = data;
     }, (error) => {

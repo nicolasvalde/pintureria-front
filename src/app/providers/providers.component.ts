@@ -13,7 +13,7 @@ export class ProvidersComponent implements OnInit {
 
   providers: Provider[];
 
-  constructor(private providerService: ProvidersService, private httpClient: HttpClient) {
+  constructor(private providerService: ProvidersService) {
     this.providerService.get().subscribe((data: Provider[]) => {
       this.providers = data;
     }, (error) => {
