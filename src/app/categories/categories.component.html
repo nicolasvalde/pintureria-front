@@ -1,4 +1,25 @@
+<div>
+  <nav class="navbar navbar-dark bg-primary" style="margin-bottom: 10px">
+    <div class="navbar navbar-brand">
+      RUBROS
+    </div>
+  </nav>
 
-<br>
-<p-dropdown [(ngModel)]="selectedCategory" [options]="categories" [filter]="true"
-            [autoWidth]="false" [style]="{'width':'150px'}" optionLabel="name"></p-dropdown>
+  <p-table [value]="categories">
+    <ng-template pTemplate="header">
+      <tr>
+        <th scope="col">Nombre</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-category>
+      <tr>
+        <td>{{category.name}}</td>
+        <td>
+          <a class="btn btn-outline-primary btn-sm" style="margin-right: 10px" routerLink="/product/{{category.id}}">Editar</a>
+          <button type="button" class="btn btn-outline-danger btn-sm" (click)="delete(category.id)">Eliminar</button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

@@ -11,8 +11,15 @@
   </div>
 
   <div class="form-group">
-    <label for="id_categoria">Categoría</label>
-    <app-categories [product]="product" [(ngModel)]="product.id_categoria" id="id_categoria"></app-categories>
+    <label for="id_category">Categoría</label>
+    <br>
+    <p-dropdown [(ngModel)]="selectedCategory" [options]="categories" [filter]="true"
+                [placeholder]="'Seleccionar...'" [autoWidth]="false" [style]="{'width':'150px'}"
+                [autoDisplayFirst]="false" filterPlaceholder="Buscar..."
+                [emptyFilterMessage]="'No se encuentran coincidencias'"
+                optionLabel="name" (onChange)="selectCat($event)" id="id_category">
+    </p-dropdown>
+    <button (click)="addCategory()" class="btn btn-primary" style="margin-left: 10px">Agregar rubro</button>
   </div>
 
 

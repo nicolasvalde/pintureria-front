@@ -1,7 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CategoriesService} from '../services/categories.service';
 import {Category} from '../interfaces/category';
-import {Product} from '../interfaces/product';
 
 @Component({
   selector: 'app-categories',
@@ -11,10 +10,6 @@ import {Product} from '../interfaces/product';
 export class CategoriesComponent implements OnInit {
 
   categories: Category[];
-
-  selectedCategory: Category;
-
-  @Input() product: Product;
 
   constructor(private categoriesService: CategoriesService) {
     this.getCategories();
@@ -26,10 +21,25 @@ export class CategoriesComponent implements OnInit {
   getCategories() {
     this.categoriesService.get().subscribe((data: Category[]) => {
       this.categories = data;
+      console.log(data);
     }, (error) => {
       console.log(error);
       alert('Se ha producido un error');
     });
+  }
+
+// Elimina un rubro
+  delete(id) {
+    if (confirm('Desea eliminar este producto?')) {
+      this.categoriesService.delete(id).subscribe(() => {
+        alert('Eliminado con éxito');
+        // Llama para actualizar los productos
+        this.getCategories();
+      }, (error) => {
+        console.log(error);
+        alert('Error');
+      });
+    }
   }
 
 }

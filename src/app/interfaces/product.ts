@@ -5,5 +5,5 @@ export interface Product {
   precio_actual?: number;
   margen_ganancia?: number;
   stock?: number;
-  id_categoria?: number;
+  id_category: number;
 }
