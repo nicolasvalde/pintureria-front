@@ -4,7 +4,7 @@
   </div>
 </nav>
 
-<div>
+<div class="ui-g-4">
   <div class="form-group">
     <label for="nombre">Nombre del producto</label>
     <input [(ngModel)]="product.nombre" class="form-control" id="nombre" placeholder="">
@@ -17,9 +17,9 @@
                 [placeholder]="'Seleccionar...'" [autoWidth]="false" [style]="{'width':'150px'}"
                 [autoDisplayFirst]="false" filterPlaceholder="Buscar..."
                 [emptyFilterMessage]="'No se encuentran coincidencias'"
-                optionLabel="name" (onChange)="selectCat($event)" id="id_category">
+                optionLabel="name" (onChange)="selectCat()" id="id_category" (onFocus)="getCategories()">
     </p-dropdown>
-    <button (click)="addCategory()" class="btn btn-primary" style="margin-left: 10px">Agregar rubro</button>
+    <button (click)="addCategory()" class="btn btn-primary" style="margin-left: 10px">Agregar rubro</button> <!-- corregir bug de cuadro de texto si se quieren agregar 2 rubros seguidos, o cuando se quiere crear y se edita el rubro -->
   </div>
 
 
@@ -30,4 +30,8 @@
 
   <button (click)="saveProduct()" class="btn btn-primary">Guardar producto</button>
 
+<p-dialog header="Crear rubro" [(visible)]="display" [modal]="true">
+  <app-category></app-category>
+</p-dialog>
 </div>
+

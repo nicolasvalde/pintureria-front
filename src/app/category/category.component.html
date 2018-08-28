@@ -1,0 +1,8 @@
+<!-- pasar a componente individual desde acá -->
+<div class="form-group">
+  <label for="name">Nombre del rubro</label>
+  <input [(ngModel)]="category.name" class="form-control" id="name" placeholder="{{newPlaceholder}}">
+</div>
+
+<button (click)="saveCategory()" class="btn btn-primary">{{buttonText}}</button>
+<!-- hasta acá -->

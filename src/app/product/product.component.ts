@@ -20,14 +20,18 @@ export class ProductComponent implements OnInit {
   };
 
   id: any;
+  id_category: any;
   editing = false;
   title = '';
   products: Product[];
   categories: SelectItem[];
   selectedCategory: Category;
-  selectedIndex: number;
+  display = false;
 
-  constructor(private productsService: ProductsService, private categoriesService: CategoriesService, private activatedRoute: ActivatedRoute) {
+  // category: SelectItem;
+
+  constructor(private productsService: ProductsService, private categoriesService: CategoriesService,
+              private activatedRoute: ActivatedRoute) {
     this.id = this.activatedRoute.snapshot.params['id'];
     this.getCategories();
     if (this.id) {
@@ -53,6 +57,7 @@ export class ProductComponent implements OnInit {
 
   saveProduct() {
     if (this.editing) {
+      this.selectedCategory = null;
       this.productsService.put(this.product).subscribe((data) => {
         alert('Producto actualizado con éxito');
         console.log(data);
@@ -81,8 +86,8 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  selectCat(cat: number) {
-    console.log(this.selectedCategory);
+  selectCat() {
+    // console.log(this.selectedCategory);
 
     // se asigna al producto que va a ser enviado por post
     // el id del item del dropdown seleccionado
@@ -90,6 +95,7 @@ export class ProductComponent implements OnInit {
   }
 
   addCategory() {
-    console.log('Agregar modal');
+    this.display = true;
+    this.getCategories();
   }
 }

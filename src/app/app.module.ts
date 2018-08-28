@@ -20,6 +20,9 @@ import {ClientsComponent} from './clients/clients.component';
 import {ProviderComponent} from './provider/provider.component';
 import {ProvidersComponent} from './providers/providers.component';
 import {CategoriesComponent} from './categories/categories.component';
+import {ScrollPanelModule} from 'primeng/primeng';
+import {DialogModule} from 'primeng/dialog';
+import {CategoryComponent} from './category/category.component';
 
 
 const routes: Route[] = [
@@ -32,7 +35,15 @@ const routes: Route[] = [
   {path: 'clients', component: ClientsComponent},
   {path: 'provider', component: ProviderComponent},
   {path: 'providers', component: ProvidersComponent},
-  {path: 'categories', component: CategoriesComponent}, //borrar después
+  {
+    path: 'categories',
+    component: CategoriesComponent,
+    children: [
+      {path: 'category/:id', component: CategoryComponent, outlet: 'edicion'}
+    ]
+  },
+  {path: 'category', component: CategoryComponent},
+  {path: 'category/:id', component: CategoryComponent},
 ];
 
 @NgModule({
@@ -45,7 +56,8 @@ const routes: Route[] = [
     ClientsComponent,
     ProviderComponent,
     ProvidersComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +71,9 @@ const routes: Route[] = [
     HttpClientModule,
     TableModule,
     FormsModule,
-    DropdownModule
+    DropdownModule,
+    ScrollPanelModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

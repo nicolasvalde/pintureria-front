@@ -33,6 +33,11 @@ export class AppComponent {
             icon: 'pi pi-fw pi-external-link',
             routerLink: '/products',
           },
+          {
+            label: 'Gestionar rubros',
+            icon: 'pi pi-fw pi-external-link',
+            routerLink: '/categories',
+          },
         ]
       }, {
         label: 'Clientes',
