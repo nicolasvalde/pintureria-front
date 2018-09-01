@@ -4,7 +4,7 @@
   </div>
 </nav>
 
-<div>
+<div class="ui-g-4">
   <div class="form-group">
     <label for="razon_social">Razón social del proveedor</label>
     <input [(ngModel)]="provider.razon_social" class="form-control" id="razon_social" placeholder="">
@@ -23,6 +23,11 @@
   <div class="form-group">
     <label for="mail">e-Mail</label>
     <input [(ngModel)]="provider.mail" class="form-control" id="mail" placeholder="">
+  </div>
+
+  <div>
+    Teléfonos
+    <p-listbox></p-listbox>
   </div>
 
   <button (click)="saveProvider()" class="btn btn-primary">Crear proveedor</button>

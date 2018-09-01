@@ -70,23 +70,20 @@ export class AppComponent {
           },
         ]
       }, {
-        label: 'Preferencias',
+        label: 'Operaciones',
         icon: 'pi pi-fw pi-cog',
         items: [
           {
-            label: 'Edit',
+            label: 'Compra',
             icon: 'pi pi-fw pi-pencil',
-            items: [
-              {label: 'Save', icon: 'pi pi-fw pi-save'},
-              {label: 'Update', icon: 'pi pi-fw pi-save'},
-            ]
           },
           {
-            label: 'Other',
+            label: 'Venta',
             icon: 'pi pi-fw pi-tags',
-            items: [
-              {label: 'Delete', icon: 'pi pi-fw pi-minus'}
-            ]
+          },
+          {
+            label: 'Presupuesto',
+            icon: 'pi pi-fw pi-tags'
           }
         ]
       }

@@ -23,6 +23,7 @@ import {CategoriesComponent} from './categories/categories.component';
 import {ScrollPanelModule} from 'primeng/primeng';
 import {DialogModule} from 'primeng/dialog';
 import {CategoryComponent} from './category/category.component';
+import {ListboxModule} from 'primeng/listbox';
 
 
 const routes: Route[] = [
@@ -73,7 +74,8 @@ const routes: Route[] = [
     FormsModule,
     DropdownModule,
     ScrollPanelModule,
-    DialogModule
+    DialogModule,
+    ListboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

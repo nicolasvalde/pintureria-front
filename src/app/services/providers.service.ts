@@ -7,7 +7,7 @@ import {Provider} from '../interfaces/provider';
 })
 export class ProvidersService {
 
-  API_ENDPOINT = 'http://localhost:8000/';
+  API_ENDPOINT = 'http://localhost/pintureria/public/';
 
   constructor(private httpClient: HttpClient) {
   }

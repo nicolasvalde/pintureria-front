@@ -7,7 +7,7 @@ import {Category} from '../interfaces/category';
 })
 export class CategoriesService {
 
-  API_ENDPOINT = 'http://localhost:8000/';
+  API_ENDPOINT = 'http://localhost/pintureria/public/';
 
   constructor(private httpClient: HttpClient) {
   }

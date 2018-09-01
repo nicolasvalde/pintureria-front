@@ -11,11 +11,16 @@ export class ProductsComponent implements OnInit {
 
   products: Product[];
 
+  colNombre: any[];
+
   constructor(private productService: ProductsService) {
     this.getProducts();
   }
 
   ngOnInit() {
+    /* this.colNombre = [
+      {field: 'nombre', header: 'Nombre'}
+    ]; */
   }
 
   // Muestra los productos
