@@ -13,8 +13,8 @@ export class ProviderComponent implements OnInit {
   provider: Provider = {
     'razon_social': null,
     'direccion': null,
-    'telefono': null,
-    'mail': null
+    'mail': null,
+    'cuit': null
   };
 
   constructor(private providersService: ProvidersService) {
@@ -34,4 +34,7 @@ export class ProviderComponent implements OnInit {
     });
   }
 
+  addPhone() {
+    alert('Por implementar');
+  }
 }

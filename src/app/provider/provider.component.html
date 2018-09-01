@@ -16,8 +16,8 @@
   </div>
 
   <div class="form-group">
-    <label for="telefono">Teléfono</label>
-    <input [(ngModel)]="provider.telefono" class="form-control" id="telefono" placeholder="">
+    <label for="cuit">CUIT</label>
+    <input [(ngModel)]="provider.cuit" class="form-control" id="cuit" placeholder="">
   </div>
 
   <div class="form-group">
@@ -25,9 +25,11 @@
     <input [(ngModel)]="provider.mail" class="form-control" id="mail" placeholder="">
   </div>
 
+
   <div>
     Teléfonos
-    <p-listbox></p-listbox>
+    <p-listbox class="ui-g-4"></p-listbox>
+    <button (click)="addPhone()" class="btn btn-primary">Agregar teléfono</button>
   </div>
 
   <button (click)="saveProvider()" class="btn btn-primary">Crear proveedor</button>
