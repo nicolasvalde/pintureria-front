@@ -5,6 +5,10 @@ import {ActivatedRoute} from '@angular/router';
 import {Category} from '../interfaces/category';
 import {CategoriesService} from '../services/categories.service';
 import {SelectItem} from 'primeng/api';
+import {Brand} from '../interfaces/brand';
+import {BrandsService} from '../services/brands.service';
+import {Measure} from '../interfaces/measure';
+import {MeasuresService} from '../services/measures.service';
 
 @Component({
   selector: 'app-product',
@@ -14,9 +18,10 @@ import {SelectItem} from 'primeng/api';
 export class ProductComponent implements OnInit {
 
   product: Product = {
-    'nombre': null,
-    'descripcion': null,
-    'id_category': null
+    'brand_id': null,
+    'presentacion_id': null,
+    'id_category': null,
+    'provider_id': null
   };
 
   id: any;
@@ -24,16 +29,25 @@ export class ProductComponent implements OnInit {
   editing = false;
   title = '';
   products: Product[];
-  categories: SelectItem[];
-  selectedCategory: Category;
   display = false;
 
+  categories: SelectItem[];
+  selectedCategory: Category;
   // category: SelectItem;
 
+  brands: SelectItem[];
+  selectedBrand: Brand;
+
+  measures: SelectItem[];
+  selectedMeasure: string;
+
   constructor(private productsService: ProductsService, private categoriesService: CategoriesService,
-              private activatedRoute: ActivatedRoute) {
+              private brandsService: BrandsService, private activatedRoute: ActivatedRoute,
+              private measuresService: MeasuresService) {
     this.id = this.activatedRoute.snapshot.params['id'];
     this.getCategories();
+    this.getBrands();
+    this.getMeasures();
     if (this.id) {
       this.title = 'EDITAR PRODUCTO';
       this.editing = true;
@@ -86,6 +100,26 @@ export class ProductComponent implements OnInit {
     });
   }
 
+  getBrands() {
+    this.brandsService.get().subscribe((data: SelectItem[]) => {
+      this.brands = data;
+      console.log(data);
+    }, (error) => {
+      console.log(error);
+      alert('Se ha producido un error');
+    });
+  }
+
+  getMeasures() {
+    this.measuresService.get().subscribe((data: SelectItem[]) => {
+      this.measures = data;
+      console.log(data);
+    }, (error) => {
+      console.log(error);
+      alert('Se ha producido un error');
+    });
+  }
+
   selectCat() {
     // console.log(this.selectedCategory);
 
@@ -98,4 +132,15 @@ export class ProductComponent implements OnInit {
     this.display = true;
     this.getCategories();
   }
+
+  addBrand() {
+    this.display = true;
+    this.getBrands();
+  }
+
+  addMeasure() {
+    this.display = true;
+    this.getMeasures();
+  }
+
 }

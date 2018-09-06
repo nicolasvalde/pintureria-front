@@ -19,6 +19,10 @@
         <td>{{provider.direccion}}</td>
         <td>{{provider.telefono}}</td>
         <td>{{provider.mail}}</td>
+        <td>
+          <a class="btn btn-outline-primary btn-sm" style="margin-right: 10px" routerLink="/provider/{{provider.id}}">Editar</a>
+          <button type="button" class="btn btn-outline-danger btn-sm" (click)="delete(provider.id)">Eliminar</button>
+        </td>
       </tr>
     </ng-template>
   </p-table>

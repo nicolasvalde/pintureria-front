@@ -1,47 +1,55 @@
 <div>
   <nav class="navbar navbar-dark bg-primary" style="margin-bottom: 10px">
     <div class="navbar navbar-brand">
-      RUBROS
+      PRESENTACIONES
     </div>
   </nav>
 
+  <!-- No tiene sentido la edición de presentaciones, y puede ser peligroso}
+
   <p-dialog header="Editar rubro" [(visible)]="display" [modal]="true" (onHide)="cerrar()">
-    <router-outlet name="edicion">
+    <router-outlet name="brandEdition">
 
     </router-outlet>
   </p-dialog>
 
+  -->
+
   <div class="ui-g-4">
 
-    <p-table [value]="categories">
+    <p-table [value]="measures">
       <ng-template pTemplate="header">
         <tr>
-          <th scope="col">Nombre</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Unidad de medida</th>
         </tr>
       </ng-template>
 
-      <ng-template pTemplate="body" let-category>
+      <ng-template pTemplate="body" let-measure>
         <tr>
-          <td>{{category.name}}</td>
+          <td>{{measure.quantity}}</td>
+          <td>{{measure.scale}}</td>
           <td>
+
+
+            <!-- En caso que se quiera habilitar la edición de presentaciones
 
             <button class=" btn btn-outline-primary btn-sm" style="margin-right: 10px" (click)="showDialog()" pButton
                     icon="pi pi-info-circle" label="Show"
-                    [routerLink]="[{ outlets: { categoryEdition: ['category', category.id] } }]"> Editar
+                    [routerLink]="[{ outlets: { brandEdition: ['brand', brand.id] } }]"> Editar
             </button>
+
+            -->
 
             <!-- <a class="btn btn-outline-primary btn-sm" style="margin-right: 10px" routerLink="/categories/{{category.id}}">Editar</a> -->
 
-            <button type="button" class="btn btn-outline-danger btn-sm" (click)="delete(category.id)">Eliminar</button>
+            <button type="button" class="btn btn-outline-danger btn-sm" (click)="delete(measure.id)">Eliminar</button>
           </td>
         </tr>
       </ng-template>
     </p-table>
     <br>
-    <app-category></app-category>
+    <app-measure></app-measure>
   </div>
 
-
 </div>
-
-

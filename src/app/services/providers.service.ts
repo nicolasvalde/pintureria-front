@@ -20,4 +20,13 @@ export class ProvidersService {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.httpClient.post(this.API_ENDPOINT + 'api/v1/providers', provider);
   }
+
+  put(provider) {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.httpClient.put(this.API_ENDPOINT + 'api/v1/providers/' + provider.id, provider);
+  }
+
+  delete(id) {
+    return this.httpClient.delete(this.API_ENDPOINT + 'api/v1/providers/' + id);
+  }
 }

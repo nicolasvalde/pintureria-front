@@ -24,19 +24,29 @@ export class AppComponent {
         label: 'Productos',
         icon: 'pi pi-pw pi-file',
         items: [{
-          label: 'Nuevo producto',
+          label: 'Nuevo Producto',
           icon: 'pi pi-fw pi-plus',
           routerLink: '/product',
         },
           {
-            label: 'Listar productos',
+            label: 'Listar Productos',
             icon: 'pi pi-fw pi-external-link',
             routerLink: '/products',
           },
           {
-            label: 'Gestionar rubros',
+            label: 'Gestionar Rubros',
             icon: 'pi pi-fw pi-external-link',
             routerLink: '/categories',
+          },
+          {
+            label: 'Gestionar Marcas',
+            icon: 'pi pi-fw pi-external-link',
+            routerLink: '/brands',
+          },
+          {
+            label: 'Gestionar Presentaciones',
+            icon: 'pi pi-fw pi-external-link',
+            routerLink: '/measures',
           },
         ]
       }, {

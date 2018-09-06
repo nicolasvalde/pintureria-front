@@ -1,0 +1,8 @@
+<!-- pasar a componente individual desde acá -->
+<div class="form-group">
+  <label for="name">Nombre de la marca</label>
+  <input [(ngModel)]="brand.name" class="form-control" id="name" placeholder="{{newPlaceholder}}">
+</div>
+
+<button (click)="saveBrand()" class="btn btn-primary">{{buttonText}}</button>
+<!-- hasta acá -->

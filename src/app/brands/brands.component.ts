@@ -1,46 +1,44 @@
 import {Component, OnInit} from '@angular/core';
-import {CategoriesService} from '../services/categories.service';
-import {Category} from '../interfaces/category';
+import {Brand} from '../interfaces/brand';
+import {BrandsService} from '../services/brands.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'app-categories',
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.css']
+  selector: 'app-brands',
+  templateUrl: './brands.component.html',
+  styleUrls: ['./brands.component.css']
 })
-export class CategoriesComponent implements OnInit {
+export class BrandsComponent implements OnInit {
 
-  categories: Category[];
+  brands: Brand[];
   editing = false;
   display = false;
   flag = false;
 
-  category: Category = {
+  brand: Brand = {
     name: null,
   };
 
   id: any;
   newPlaceholder = '';
 
-  constructor(private categoriesService: CategoriesService, private activatedRoute: ActivatedRoute, private router: Router) {
-    this.getCategories();
+  constructor(private brandsService: BrandsService, private activatedRoute: ActivatedRoute, private router: Router) {
+    this.getBrands();
     this.id = this.activatedRoute.snapshot.params['id'];
     // this.getCategories();
     if (this.id) {
-      // this.title = 'EDITAR RUBRO';
       this.newPlaceholder = 'Ingrese el nuevo nombre del rubro...';
       this.editing = true;
-      this.categoriesService.get().subscribe((data: Category[]) => {
-        this.categories = data;
-        this.category = this.categories.find((m) => {
+      this.brandsService.get().subscribe((data: Brand[]) => {
+        this.brands = data;
+        this.brand = this.brands.find((m) => {
           return m.id == this.id;
         });
-        console.log(this.category);
+        console.log(this.brand);
       }, (error => {
         console.log(error);
       }));
     } else {
-      // this.title = 'NUEVO PRODUCTO';
       this.newPlaceholder = 'Ingrese nombre del nuevo rubro...';
       this.editing = false;
     }
@@ -49,9 +47,9 @@ export class CategoriesComponent implements OnInit {
   ngOnInit() {
   }
 
-  getCategories() {
-    this.categoriesService.get().subscribe((data: Category[]) => {
-      this.categories = data;
+  getBrands() {
+    this.brandsService.get().subscribe((data: Brand[]) => {
+      this.brands = data;
       console.log(data);
     }, (error) => {
       console.log(error);
@@ -59,20 +57,19 @@ export class CategoriesComponent implements OnInit {
     });
   }
 
-// Elimina un rubro
+  // Elimina un rubro
   delete(id) {
-    if (confirm('Desea eliminar este rubro?')) {
-      this.categoriesService.delete(id).subscribe(() => {
-        alert('Eliminado con éxito');
+    if (confirm('Desea eliminar esta marca?')) {
+      this.brandsService.delete(id).subscribe(() => {
+        alert('Eliminada con éxito');
         // Llama para actualizar los productos
-        this.getCategories();
+        this.getBrands();
       }, (error) => {
         console.log(error);
         alert('Error');
       });
     }
   }
-
 
   showDialog() {
     this.display = true;
@@ -84,8 +81,8 @@ export class CategoriesComponent implements OnInit {
     // evita que se haga dos veces el onHide
     if (this.flag == true) {
       this.flag = false;
-      this.router.navigateByUrl('categories');
+      this.router.navigateByUrl('brands');
     }
-    this.getCategories();
+    this.getBrands();
   }
 }

@@ -13,7 +13,7 @@
 
     <ng-template pTemplate="header">
       <tr>
-        <th scope="col">Nombre
+        <th scope="col">Marca
 
           <!--          <input type="text" pInputText size="20" placeholder="Buscar producto..."
                            (input)="dt.filterGlobal($event.target.value, 'contains')" style="width: 140px; alignment: right"> -->
@@ -29,19 +29,21 @@
                  (input)="dt.filter($event.target.value, 'id_category', 'contains')"
                  style="width: 140px; alignment: right">
         </th>
-        <th scope="col">Descripción</th>
+        <th scope="col">Presentación</th>
         <th scope="col">Precio Actual</th>
-        <th scope="col">Stock</th>
+        <th scope="col">Stock Oficial</th>
+        <th scope="col">Stock Paralelo</th>
       </tr>
     </ng-template>
 
     <ng-template pTemplate="body" let-product>
       <tr>
-        <td>{{product.nombre}}</td>
+        <td>{{product.brand_id}}</td>
         <td><span> {{translateCategory(product)}} </span></td>
-        <td>{{product.descripcion}}</td>
+        <td>{{product.presentacion_id}}</td>
         <td>{{product.precio_actual}}</td>
-        <td>{{product.stock}}</td>
+        <td>{{product.stock_blanco}}</td>
+        <td>{{product.stock_negro}}</td>
         <td>
           <a class="btn btn-outline-primary btn-sm" style="margin-right: 10px" routerLink="/product/{{product.id}}">Editar</a>
           <button type="button" class="btn btn-outline-danger btn-sm" (click)="delete(product.id)">Eliminar</button>

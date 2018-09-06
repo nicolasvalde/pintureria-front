@@ -1,0 +1,13 @@
+<!-- pasar a componente individual desde acá -->
+<div class="form-group">
+  <label for="quantity">Cantidad</label>
+  <input [(ngModel)]="measure.quantity" class="form-control" id="quantity" placeholder="{{newPlaceholder_1}}">
+</div>
+
+<div class="form-group">
+  <label for="scale">Unidad de medida</label>
+  <input [(ngModel)]="measure.scale" class="form-control" id="scale" placeholder="{{newPlaceholder_2}}">
+</div>
+
+<button (click)="saveMeasure()" class="btn btn-primary">{{buttonText}}</button>
+<!-- hasta acá -->

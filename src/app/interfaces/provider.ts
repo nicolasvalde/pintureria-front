@@ -4,4 +4,5 @@ export interface Provider {
   direccion: string;
   mail: string;
   cuit: number;
+  telefono: string;
 }

@@ -24,8 +24,10 @@ import {ScrollPanelModule} from 'primeng/primeng';
 import {DialogModule} from 'primeng/dialog';
 import {CategoryComponent} from './category/category.component';
 import {ListboxModule} from 'primeng/listbox';
-import {TelephoneComponent} from './telephone/telephone.component';
-import {TelephonesComponent} from './telephones/telephones.component';
+import {BrandsComponent} from './brands/brands.component';
+import {BrandComponent} from './brand/brand.component';
+import {MeasureComponent} from './measure/measure.component';
+import {MeasuresComponent} from './measures/measures.component';
 
 
 const routes: Route[] = [
@@ -37,18 +39,32 @@ const routes: Route[] = [
   {path: 'client', component: ClientComponent},
   {path: 'clients', component: ClientsComponent},
   {path: 'provider', component: ProviderComponent},
+  {path: 'provider/:id', component: ProviderComponent},
   {path: 'providers', component: ProvidersComponent},
+
   {
     path: 'categories',
     component: CategoriesComponent,
     children: [
-      {path: 'category/:id', component: CategoryComponent, outlet: 'edicion'}
+      {path: 'category/:id', component: CategoryComponent, outlet: 'categoryEdition'}
     ]
   },
   {path: 'category', component: CategoryComponent},
   {path: 'category/:id', component: CategoryComponent},
-  {path: 'telephone', component: TelephoneComponent},
-  {path: 'telephones', component: TelephonesComponent},
+
+  {
+    path: 'brands',
+    component: BrandsComponent,
+    children: [
+      {path: 'brand/:id', component: BrandComponent, outlet: 'brandEdition'}
+    ]
+  },
+  {path: 'brand', component: BrandComponent},
+  {path: 'brand/:id', component: BrandComponent},
+
+  {path: 'measures', component: MeasuresComponent},
+  {path: 'measure', component: MeasureComponent},
+  {path: 'measure/:id', component: MeasureComponent},
 ];
 
 @NgModule({
@@ -63,8 +79,10 @@ const routes: Route[] = [
     ProvidersComponent,
     CategoriesComponent,
     CategoryComponent,
-    TelephoneComponent,
-    TelephonesComponent
+    BrandsComponent,
+    BrandComponent,
+    MeasureComponent,
+    MeasuresComponent,
   ],
   imports: [
     BrowserModule,

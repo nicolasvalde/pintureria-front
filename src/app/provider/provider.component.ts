@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Client} from '../interfaces/client';
 import {Provider} from '../interfaces/provider';
 import {ProvidersService} from '../services/providers.service';
 import {SelectItem} from 'primeng/api';
-import {Telephone} from '../interfaces/telephone';
+import {Product} from '../interfaces/product';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-provider',
@@ -12,38 +12,59 @@ import {Telephone} from '../interfaces/telephone';
 })
 export class ProviderComponent implements OnInit {
 
+  id: any;
+  title = '';
+  editing = false;
+  providers: Provider[];
+
   provider: Provider = {
     'razon_social': null,
     'direccion': null,
     'mail': null,
-    'cuit': null
+    'cuit': null,
+    'telefono': null
   };
 
-  telephone: Telephone = {
-    'number': null,
-    'id_provider': 1
-  };
-
-  telephones: SelectItem[];
-
-  selectedTelephone: Telephone;
-
-  constructor(private providersService: ProvidersService) {
+  constructor(private providersService: ProvidersService, private activatedRoute: ActivatedRoute) {
+    this.id = this.activatedRoute.snapshot.params['id'];
+    if (this.id) {
+      this.title = 'EDITAR PROVEEDOR';
+      this.editing = true;
+      this.providersService.get().subscribe((data: Provider[]) => {
+        this.providers = data;
+        this.provider = this.providers.find((m) => {
+          return m.id == this.id;
+        });
+        console.log(this.provider);
+      }, (error => {
+        console.log(error);
+      }));
+    } else {
+      this.title = 'NUEVO PROVEEDOR';
+      this.editing = false;
+    }
   }
 
   ngOnInit() {
   }
 
   saveProvider() {
-    console.log(this.provider);
-    this.providersService.save(this.provider).subscribe((data) => {
-      alert('Proveedor creado con éxito');
-      console.log(data);
-    }, (error) => {
-      console.log(error);
-      alert('Ocurrió un error');
-    });
+    if (this.editing) {
+      this.providersService.put(this.provider).subscribe((data) => {
+        alert('Proveedor actualizado con éxito');
+        console.log(data);
+      }, (error) => {
+        console.log(error);
+        alert('Ocurrió un error');
+      });
+    } else {
+      this.providersService.save(this.provider).subscribe((data) => {
+        alert('Proveedor creado con éxito');
+        console.log(data);
+      }, (error) => {
+        console.log(error);
+        alert('Ocurrió un error');
+      });
+    }
   }
-
-
 }
