@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductsService} from '../services/products.service';
 import {Product} from '../interfaces/product';
+import {Category} from '../interfaces/category';
+import {CategoriesService} from '../services/categories.service';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-products',
@@ -11,10 +14,13 @@ export class ProductsComponent implements OnInit {
 
   products: Product[];
 
-  colNombre: any[];
+  // colNombre: any[];
 
-  constructor(private productService: ProductsService) {
+  categories: Category[];
+
+  constructor(private productService: ProductsService, private categoriesService: CategoriesService) {
     this.getProducts();
+    this.getCategories();
   }
 
   ngOnInit() {
@@ -47,4 +53,21 @@ export class ProductsComponent implements OnInit {
     }
   }
 
+  getCategories() {
+    this.categoriesService.get().subscribe((data: Category[]) => {
+      this.categories = data;
+      console.log(data);
+    }, (error) => {
+      console.log(error);
+      alert('Se ha producido un error');
+    });
+  }
+
+  translateCategory(product: Product): String {
+    for (const category of this.categories) {
+      if (category.id == product.id_category) {
+        return category.name;
+      }
+    }
+  }
 }

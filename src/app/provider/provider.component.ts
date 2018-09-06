@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Client} from '../interfaces/client';
 import {Provider} from '../interfaces/provider';
 import {ProvidersService} from '../services/providers.service';
+import {SelectItem} from 'primeng/api';
+import {Telephone} from '../interfaces/telephone';
 
 @Component({
   selector: 'app-provider',
@@ -16,6 +18,15 @@ export class ProviderComponent implements OnInit {
     'mail': null,
     'cuit': null
   };
+
+  telephone: Telephone = {
+    'number': null,
+    'id_provider': 1
+  };
+
+  telephones: SelectItem[];
+
+  selectedTelephone: Telephone;
 
   constructor(private providersService: ProvidersService) {
   }
@@ -34,7 +45,5 @@ export class ProviderComponent implements OnInit {
     });
   }
 
-  addPhone() {
-    alert('Por implementar');
-  }
+
 }

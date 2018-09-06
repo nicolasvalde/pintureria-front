@@ -8,21 +8,23 @@
 
 
 <p-scrollPanel>
-  <p-table #dt [columns]="colNombre" [value]="products">
+  <p-table #dt [value]="products" [columns]="categories">
+    <!-- acá va [columns]="colNombre" si el filtrado se hace de la otra forma -->
 
     <ng-template pTemplate="header">
       <tr>
         <th scope="col">Nombre
 
-<!--          <input type="text" pInputText size="20" placeholder="Buscar producto..."
-                 (input)="dt.filterGlobal($event.target.value, 'contains')" style="width: 140px; alignment: right"> -->
+          <!--          <input type="text" pInputText size="20" placeholder="Buscar producto..."
+                           (input)="dt.filterGlobal($event.target.value, 'contains')" style="width: 140px; alignment: right"> -->
 
-          <input pInputText type="text" placeholder="Buscar rubro..."
+          <input pInputText type="text" placeholder="Buscar producto..."
                  (input)="dt.filter($event.target.value, 'nombre', 'contains')"
                  style="width: 140px; alignment: right">
 
         </th>
         <th scope="col">Rubro
+          <!-- (input)="dt.filter($event.target.value, 'id_category', 'contains')" -->
           <input pInputText type="text" placeholder="Buscar rubro..."
                  (input)="dt.filter($event.target.value, 'id_category', 'contains')"
                  style="width: 140px; alignment: right">
@@ -36,7 +38,7 @@
     <ng-template pTemplate="body" let-product>
       <tr>
         <td>{{product.nombre}}</td>
-        <td>{{product.id_category}}</td>
+        <td><span> {{translateCategory(product)}} </span></td>
         <td>{{product.descripcion}}</td>
         <td>{{product.precio_actual}}</td>
         <td>{{product.stock}}</td>

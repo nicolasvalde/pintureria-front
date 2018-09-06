@@ -24,6 +24,8 @@ import {ScrollPanelModule} from 'primeng/primeng';
 import {DialogModule} from 'primeng/dialog';
 import {CategoryComponent} from './category/category.component';
 import {ListboxModule} from 'primeng/listbox';
+import {TelephoneComponent} from './telephone/telephone.component';
+import {TelephonesComponent} from './telephones/telephones.component';
 
 
 const routes: Route[] = [
@@ -45,6 +47,8 @@ const routes: Route[] = [
   },
   {path: 'category', component: CategoryComponent},
   {path: 'category/:id', component: CategoryComponent},
+  {path: 'telephone', component: TelephoneComponent},
+  {path: 'telephones', component: TelephonesComponent},
 ];
 
 @NgModule({
@@ -58,7 +62,9 @@ const routes: Route[] = [
     ProviderComponent,
     ProvidersComponent,
     CategoriesComponent,
-    CategoryComponent
+    CategoryComponent,
+    TelephoneComponent,
+    TelephonesComponent
   ],
   imports: [
     BrowserModule,
