@@ -43,11 +43,6 @@ export class AppComponent {
             icon: 'pi pi-fw pi-external-link',
             routerLink: '/brands',
           },
-          {
-            label: 'Gestionar Presentaciones',
-            icon: 'pi pi-fw pi-external-link',
-            routerLink: '/measures',
-          },
         ]
       }, {
         label: 'Clientes',

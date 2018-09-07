@@ -14,9 +14,11 @@ export class ProductsComponent implements OnInit {
 
   products: Product[];
 
-  // colNombre: any[];
-
   categories: Category[];
+
+  category: Category = {
+    'name': null,
+  };
 
   constructor(private productService: ProductsService, private categoriesService: CategoriesService) {
     this.getProducts();
@@ -24,9 +26,6 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    /* this.colNombre = [
-      {field: 'nombre', header: 'Nombre'}
-    ]; */
   }
 
   // Muestra los productos

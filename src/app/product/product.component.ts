@@ -7,8 +7,8 @@ import {CategoriesService} from '../services/categories.service';
 import {SelectItem} from 'primeng/api';
 import {Brand} from '../interfaces/brand';
 import {BrandsService} from '../services/brands.service';
-import {Measure} from '../interfaces/measure';
-import {MeasuresService} from '../services/measures.service';
+import {Provider} from '../interfaces/provider';
+import {ProvidersService} from '../services/providers.service';
 
 @Component({
   selector: 'app-product',
@@ -19,9 +19,10 @@ export class ProductComponent implements OnInit {
 
   product: Product = {
     'brand_id': null,
-    'presentacion_id': null,
+    'measure_quantity': null,
+    'measure_scale': null,
     'id_category': null,
-    'provider_id': null
+    'provider_id': null,
   };
 
   id: any;
@@ -39,15 +40,25 @@ export class ProductComponent implements OnInit {
   selectedBrand: Brand;
 
   measures: SelectItem[];
-  selectedMeasure: string;
+  selectedMeasure: any;
+
+  providers: SelectItem[];
+  selectedProvider: Provider;
 
   constructor(private productsService: ProductsService, private categoriesService: CategoriesService,
-              private brandsService: BrandsService, private activatedRoute: ActivatedRoute,
-              private measuresService: MeasuresService) {
+              private brandsService: BrandsService, private providersService: ProvidersService,
+              private activatedRoute: ActivatedRoute) {
     this.id = this.activatedRoute.snapshot.params['id'];
     this.getCategories();
     this.getBrands();
-    this.getMeasures();
+    this.measures = [
+      {label: 'Kg', value: 'Kg'},
+      {label: 'Litros', value: 'Litros'},
+      {label: 'cc', value: 'cc'},
+      {label: 'ml', value: 'ml'},
+      {label: 'unidades', value: 'unidades'},
+    ];
+    this.getProviders();
     if (this.id) {
       this.title = 'EDITAR PRODUCTO';
       this.editing = true;
@@ -110,14 +121,22 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  getMeasures() {
-    this.measuresService.get().subscribe((data: SelectItem[]) => {
-      this.measures = data;
+  getProviders() {
+    this.providersService.get().subscribe((data: SelectItem[]) => {
+      this.providers = data;
       console.log(data);
     }, (error) => {
       console.log(error);
       alert('Se ha producido un error');
     });
+  }
+
+  selectBrand() {
+    // console.log(this.selectedCategory);
+
+    // se asigna al producto que va a ser enviado por post
+    // el id del item del dropdown seleccionado
+    this.product.brand_id = this.selectedBrand.id;
   }
 
   selectCat() {
@@ -126,6 +145,23 @@ export class ProductComponent implements OnInit {
     // se asigna al producto que va a ser enviado por post
     // el id del item del dropdown seleccionado
     this.product.id_category = this.selectedCategory.id;
+  }
+
+  selectScale() {
+    // console.log(this.selectedCategory);
+
+    // se asigna al producto que va a ser enviado por post
+    // el id del item del dropdown seleccionado
+    this.product.measure_scale = this.selectedMeasure.label;
+    console.log(this.selectedMeasure.label);
+  }
+
+  selectProvider() {
+    // console.log(this.selectedCategory);
+
+    // se asigna al producto que va a ser enviado por post
+    // el id del item del dropdown seleccionado
+    this.product.provider_id = this.selectedProvider.id;
   }
 
   addCategory() {
@@ -137,10 +173,4 @@ export class ProductComponent implements OnInit {
     this.display = true;
     this.getBrands();
   }
-
-  addMeasure() {
-    this.display = true;
-    this.getMeasures();
-  }
-
 }

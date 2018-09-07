@@ -1,7 +1,8 @@
 export interface Product {
   id?: number;
   brand_id: number;
-  presentacion_id: number;
+  measure_quantity: number;
+  measure_scale: string;
   precio_actual?: number;
   margen_ganancia?: number;
   stock_blanco?: number;

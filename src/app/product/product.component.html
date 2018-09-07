@@ -7,20 +7,20 @@
 <div class="ui-g-4">
 
   <div class="form-group">
-    <label for="id_category">Marca del producto</label>
+    <label for="brand_id">Marca del producto</label>
     <br>
     <p-dropdown [(ngModel)]="selectedBrand" [options]="brands" [filter]="true"
                 [placeholder]="'Seleccionar...'" [autoWidth]="false" [style]="{'width':'150px'}"
                 [autoDisplayFirst]="false" filterPlaceholder="Buscar..."
                 [emptyFilterMessage]="'No se encuentran coincidencias'"
-                optionLabel="name" required="true" (onChange)="selectCat()" id="brand_id" (onFocus)="getCategories()">
+                optionLabel="name" required="true" (onChange)="selectBrand()" id="brand_id" (onFocus)="getBrands()">
     </p-dropdown>
     <button (click)="addBrand()" class="btn btn-primary" style="margin-left: 10px">Agregar marca</button>
     <!-- corregir bug de cuadro de texto si se quieren agregar 2 rubros seguidos, o cuando se quiere crear y se edita el rubro -->
   </div>
 
   <div class="form-group">
-    <label for="id_category">Categoría</label>
+    <label for="id_category">Rubro</label>
     <br>
     <p-dropdown [(ngModel)]="selectedCategory" [options]="categories" [filter]="true"
                 [placeholder]="'Seleccionar...'" [autoWidth]="false" [style]="{'width':'150px'}"
@@ -32,23 +32,36 @@
     <!-- corregir bug de cuadro de texto si se quieren agregar 2 rubros seguidos, o cuando se quiere crear y se edita el rubro -->
   </div>
 
-  <div class="form-group">
-    <label>Presentación</label>
+  <div class="form-group ui-g-4" style="padding-left: 0px; padding-bottom: 0px">
+    <label for="measure_quantity">Peso/Contenido</label>
     <br>
-    <p-dropdown [options]="measures" [(ngModel)]="selectedMeasure" [style]="{'width':'150px'}">
-      <ng-template let-item pTemplate="selectedItem">
-        <span>{{item.id}}</span>
-      </ng-template>
-      <ng-template let-measure pTemplate="item">
-        <div class="ui-helper-clearfix">
-          <span>{{measure.quantity}} {{measure.scale}}</span>
-        </div>
-      </ng-template>
-    </p-dropdown>
-
-    <button (click)="addMeasure()" class="btn btn-primary" style="margin-left: 10px">Agregar presentación</button>
-    <!-- corregir bug de cuadro de texto si se quieren agregar 2 rubros seguidos, o cuando se quiere crear y se edita el rubro -->
+    <input [(ngModel)]="product.measure_quantity" class="form-control" id="measure_quantity" style="width: 150px; height: 34px">
   </div>
+
+  <div class="form-group ui-g-8" style="padding-bottom: 0px">
+    <label for="measure_scale">Unidad de medida</label>
+    <br>
+    <p-dropdown [(ngModel)]="selectedMeasure" [options]="measures" [filter]="true"
+                [placeholder]="'Seleccionar...'" [autoWidth]="false" [style]="{'width':'150px'}"
+                [autoDisplayFirst]="false" filterPlaceholder="Buscar..."
+                [emptyFilterMessage]="'No se encuentran coincidencias'"
+                optionLabel="label" (onChange)="selectScale()" id="measure_scale">
+    </p-dropdown>
+  </div>
+
+  <div>
+    <label for="provider_id">Proveedor</label>
+    <br>
+    <p-dropdown [(ngModel)]="selectedProvider" [options]="providers" [filter]="true"
+                [placeholder]="'Seleccionar...'" [autoWidth]="false" [style]="{'width':'150px'}"
+                [autoDisplayFirst]="false" filterPlaceholder="Buscar..."
+                [emptyFilterMessage]="'No se encuentran coincidencias'"
+                optionLabel="razon_social" (onChange)="selectProvider()" id="provider_id">
+    </p-dropdown>
+  </div>
+  <br>
+
+  <!-- corregir bug de cuadro de texto si se quieren agregar 2 rubros seguidos, o cuando se quiere crear y se edita el rubro -->
 
   <button (click)="saveProduct()" class="btn btn-primary">Guardar producto</button>
 

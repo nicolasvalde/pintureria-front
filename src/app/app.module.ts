@@ -26,8 +26,6 @@ import {CategoryComponent} from './category/category.component';
 import {ListboxModule} from 'primeng/listbox';
 import {BrandsComponent} from './brands/brands.component';
 import {BrandComponent} from './brand/brand.component';
-import {MeasureComponent} from './measure/measure.component';
-import {MeasuresComponent} from './measures/measures.component';
 
 
 const routes: Route[] = [
@@ -61,10 +59,6 @@ const routes: Route[] = [
   },
   {path: 'brand', component: BrandComponent},
   {path: 'brand/:id', component: BrandComponent},
-
-  {path: 'measures', component: MeasuresComponent},
-  {path: 'measure', component: MeasureComponent},
-  {path: 'measure/:id', component: MeasureComponent},
 ];
 
 @NgModule({
@@ -81,8 +75,6 @@ const routes: Route[] = [
     CategoryComponent,
     BrandsComponent,
     BrandComponent,
-    MeasureComponent,
-    MeasuresComponent,
   ],
   imports: [
     BrowserModule,
