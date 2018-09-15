@@ -13,13 +13,13 @@
       <tr>
         <th scope="col">Marca
           <input pInputText type="text" placeholder="Buscar producto..."
-                 (input)="dt.filter($event.target.value, 'contains')"
+                 (input)="dt.filter($event.target.value, 'brand_id', 'contains')"
                  style="width: 140px; alignment: right">
 
         </th>
         <th scope="col">Rubro
           <input pInputText type="text" placeholder="Buscar rubro..."
-                 (input)="dt.filter($event.target.value, 'id_category', 'contains')"
+                 (input)="dt.filter($event.target.value, 'category_id', 'contains')"
                  style="width: 140px; alignment: right">
         </th>
         <th scope="col">Presentación</th>
@@ -32,7 +32,7 @@
     <ng-template pTemplate="body" let-product let-categories="categories">
       <tr>
         <td>{{product.brand_id}}</td>
-        <td> {{translateCategory(product)}} </td>
+        <td>{{product.category_id}}</td>
         <td>{{product.measure_quantity}} {{product.measure_scale}}</td>
         <td>{{product.precio_actual}}</td>
         <td>{{product.stock_blanco}}</td>

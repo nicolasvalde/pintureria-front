@@ -21,7 +21,7 @@ export class ProductComponent implements OnInit {
     'brand_id': null,
     'measure_quantity': null,
     'measure_scale': null,
-    'id_category': null,
+    'category_id': null,
     'provider_id': null,
   };
 
@@ -144,7 +144,7 @@ export class ProductComponent implements OnInit {
 
     // se asigna al producto que va a ser enviado por post
     // el id del item del dropdown seleccionado
-    this.product.id_category = this.selectedCategory.id;
+    this.product.category_id = this.selectedCategory.id;
   }
 
   selectScale() {

@@ -32,6 +32,7 @@ export class ProductsComponent implements OnInit {
   getProducts() {
     this.productService.get().subscribe((data: Product[]) => {
       this.products = data;
+      console.log(data);
     }, (error) => {
       console.log(error);
       alert('Se ha producido un error');
@@ -55,19 +56,9 @@ export class ProductsComponent implements OnInit {
   getCategories() {
     this.categoriesService.get().subscribe((data: Category[]) => {
       this.categories = data;
-      console.log(data);
     }, (error) => {
       console.log(error);
       alert('Se ha producido un error');
     });
   }
-
-  translateCategory(product: Product): String {
-    for (const category of this.categories) {
-      if (category.id == product.id_category) {
-        return category.name;
-      }
-    }
-  }
-
 }
