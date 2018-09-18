@@ -8,6 +8,7 @@
     <ng-template pTemplate="header">
       <tr>
         <th>Razón social</th>
+        <th>CUIT</th>
         <th>Direccion</th>
         <th>Teléfono</th>
         <th>e-Mail</th>
@@ -16,6 +17,7 @@
     <ng-template pTemplate="body" let-provider>
       <tr>
         <td>{{provider.razon_social}}</td>
+        <td>{{provider.cuit}}</td>
         <td>{{provider.direccion}}</td>
         <td>{{provider.telefono}}</td>
         <td>{{provider.mail}}</td>

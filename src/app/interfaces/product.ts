@@ -9,4 +9,7 @@ export interface Product {
   margen_ganancia?: number;
   stock_blanco?: number;
   stock_negro?: number;
+  brand?: any;
+  category?: any;
+  provider?: any;
 }

@@ -28,7 +28,7 @@ export class ProvidersComponent implements OnInit {
     });
   }
 
-  // Elimina un producto
+  // Elimina un proveedor
   delete(id) {
     if (confirm('Desea eliminar este proveedor?')) {
       this.providerService.delete(id).subscribe(() => {

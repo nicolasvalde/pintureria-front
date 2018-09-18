@@ -3,7 +3,6 @@ import {ProductsService} from '../services/products.service';
 import {Product} from '../interfaces/product';
 import {Category} from '../interfaces/category';
 import {CategoriesService} from '../services/categories.service';
-import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-products',

@@ -35,6 +35,7 @@ const routes: Route[] = [
   {path: 'product', component: ProductComponent},
   {path: 'product/:id', component: ProductComponent},
   {path: 'client', component: ClientComponent},
+  {path: 'client/:id', component: ClientComponent},
   {path: 'clients', component: ClientsComponent},
   {path: 'provider', component: ProviderComponent},
   {path: 'provider/:id', component: ProviderComponent},

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark bg-primary" style="margin-bottom: 10px">
   <div class="navbar navbar-brand">
-    NUEVO CLIENTE
+    {{title}}
   </div>
 </nav>
 
@@ -16,6 +16,11 @@
   </div>
 
   <div class="form-group">
+    <label for="cuit">CUIT</label>
+    <input [(ngModel)]="client.cuit" class="form-control" id="cuit" placeholder="">
+  </div>
+
+  <div class="form-group">
     <label for="telefono">Teléfono</label>
     <input [(ngModel)]="client.telefono" class="form-control" id="telefono" placeholder="">
   </div>
@@ -25,6 +30,6 @@
     <input [(ngModel)]="client.mail" class="form-control" id="mail" placeholder="">
   </div>
 
-  <button (click)="saveClient()" class="btn btn-primary">Crear cliente</button>
+  <button (click)="saveClient()" class="btn btn-primary">Guardar cliente</button>
 
 </div>

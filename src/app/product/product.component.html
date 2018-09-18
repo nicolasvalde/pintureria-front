@@ -20,13 +20,13 @@
   </div>
 
   <div class="form-group">
-    <label for="id_category">Rubro</label>
+    <label for="category_id">Rubro</label>
     <br>
     <p-dropdown [(ngModel)]="selectedCategory" [options]="categories" [filter]="true"
                 [placeholder]="'Seleccionar...'" [autoWidth]="false" [style]="{'width':'150px'}"
                 [autoDisplayFirst]="false" filterPlaceholder="Buscar..."
                 [emptyFilterMessage]="'No se encuentran coincidencias'"
-                optionLabel="name" (onChange)="selectCat()" id="id_category" (onFocus)="getCategories()">
+                optionLabel="name" (onChange)="selectCat()" id="category_id" (onFocus)="getCategories()">
     </p-dropdown>
     <button (click)="addCategory()" class="btn btn-primary" style="margin-left: 10px">Agregar rubro</button>
     <!-- corregir bug de cuadro de texto si se quieren agregar 2 rubros seguidos, o cuando se quiere crear y se edita el rubro -->

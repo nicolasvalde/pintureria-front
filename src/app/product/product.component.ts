@@ -22,11 +22,10 @@ export class ProductComponent implements OnInit {
     'measure_quantity': null,
     'measure_scale': null,
     'category_id': null,
-    'provider_id': null,
+    'provider_id': null
   };
 
   id: any;
-  id_category: any;
   editing = false;
   title = '';
   products: Product[];
@@ -153,7 +152,6 @@ export class ProductComponent implements OnInit {
     // se asigna al producto que va a ser enviado por post
     // el id del item del dropdown seleccionado
     this.product.measure_scale = this.selectedMeasure.label;
-    console.log(this.selectedMeasure.label);
   }
 
   selectProvider() {
