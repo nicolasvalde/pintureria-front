@@ -26,20 +26,35 @@ import {CategoryComponent} from './category/category.component';
 import {ListboxModule} from 'primeng/listbox';
 import {BrandsComponent} from './brands/brands.component';
 import {BrandComponent} from './brand/brand.component';
+import {OrderNotesDetailsComponent} from './order-notes-details/order-notes-details.component';
+import {OrderNotesDetailComponent} from './order-notes-detail/order-notes-detail.component';
+import {OrderNotesComponent} from './order-notes/order-notes.component';
+import {OrderNoteComponent} from './order-note/order-note.component';
 
 
 const routes: Route[] = [
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
+
   {path: 'products', component: ProductsComponent},
   {path: 'product', component: ProductComponent},
   {path: 'product/:id', component: ProductComponent},
+
   {path: 'client', component: ClientComponent},
   {path: 'client/:id', component: ClientComponent},
   {path: 'clients', component: ClientsComponent},
+
   {path: 'provider', component: ProviderComponent},
   {path: 'provider/:id', component: ProviderComponent},
   {path: 'providers', component: ProvidersComponent},
+
+  {path: 'orderNote', component: OrderNoteComponent},
+  {path: 'orderNote/:id', component: OrderNoteComponent},
+  {path: 'orderNotes', component: OrderNotesComponent},
+
+  {path: 'onDetail', component: OrderNotesDetailComponent},
+  {path: 'onDetail/:id', component: OrderNotesDetailComponent},
+  {path: 'onDetails', component: OrderNotesDetailsComponent},
 
   {
     path: 'categories',
@@ -76,6 +91,10 @@ const routes: Route[] = [
     CategoryComponent,
     BrandsComponent,
     BrandComponent,
+    OrderNotesDetailsComponent,
+    OrderNotesDetailComponent,
+    OrderNotesComponent,
+    OrderNoteComponent,
   ],
   imports: [
     BrowserModule,

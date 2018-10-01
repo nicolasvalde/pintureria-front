@@ -75,6 +75,20 @@ export class AppComponent {
           },
         ]
       }, {
+        label: 'Notas de pedido',
+        icon: 'pi pi-fw pi-question',
+        items: [{
+          label: 'Nueva nota de pedido',
+          icon: 'pi pi-fw pi-plus',
+          routerLink: '/orderNote',
+        },
+          {
+            label: 'Listar notas de pedido',
+            icon: 'pi pi-fw pi-external-link',
+            // routerLink: '/providers',
+          },
+        ]
+      }, {
         label: 'Operaciones',
         icon: 'pi pi-fw pi-cog',
         items: [

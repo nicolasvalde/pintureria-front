@@ -5,6 +5,7 @@ export interface Product {
   provider_id: number;
   measure_quantity: number;
   measure_scale: string;
+  measure_combined?: string;
   precio_actual?: number;
   margen_ganancia?: number;
   stock_blanco?: number;
