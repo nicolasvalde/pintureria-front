@@ -4,7 +4,7 @@
       PROVEEDORES
     </div>
   </nav>
-  <p-table [value]="providers">
+  <p-table [value]="providers" [scrollable]="true" scrollHeight="700px">
     <ng-template pTemplate="header">
       <tr>
         <th>Razón social</th>
@@ -12,6 +12,7 @@
         <th>Direccion</th>
         <th>Teléfono</th>
         <th>e-Mail</th>
+        <th></th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-provider>

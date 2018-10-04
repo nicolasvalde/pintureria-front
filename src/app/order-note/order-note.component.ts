@@ -8,6 +8,7 @@ import {Product} from '../interfaces/product';
 import {ProductsService} from '../services/products.service';
 import {OrderNoteDetail} from '../interfaces/orderNoteDetail';
 import {OrderNotesDetailsService} from '../services/order-notes-details.service';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-order-note',
@@ -18,7 +19,8 @@ export class OrderNoteComponent implements OnInit {
 
   orderNote: OrderNote = {
     'provider_id': null,
-    'date': null
+    'date': null,
+    'total': null
   };
 
   onDetail: OrderNoteDetail = {
@@ -39,13 +41,6 @@ export class OrderNoteComponent implements OnInit {
 
   display = false;
 
-  addCod: string;
-  addQuant: number;
-  addMeasure: number;
-  addName: string;
-  addPxu: number;
-  addPxt: number;
-
   constructor(private orderNotesService: OrderNotesService, private providersService: ProvidersService,
               private productService: ProductsService, private onDetailsService: OrderNotesDetailsService) {
     this.getProviders();
@@ -53,7 +48,6 @@ export class OrderNoteComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.onDetails.get().then(onDetails => this.onDetails = onDetails);
   }
 
   getProviders() {
@@ -101,9 +95,48 @@ export class OrderNoteComponent implements OnInit {
       'quantity': null,
       'product_code': null,
     };
+
     this.selectedProduct = null;
 
     this.display = false;
 
+    this.calcularTotal();
+  }
+
+  calcularTotal() {
+    let total = 0;
+
+    this.onDetailsOficial.forEach(function (value) {
+      console.log(value);
+      total += ((value.price.valueOf()) * (value.quantity.valueOf()));
+    });
+
+    this.onDetailsPresupuesto.forEach(function (value) {
+      console.log(value);
+      total += ((value.price.valueOf()) * (value.quantity.valueOf()));
+    });
+
+    this.orderNote.total = total;
+  }
+
+  saveOrderNote() {
+
+    this.orderNote = {
+      'provider_id': this.selectedProvider.id,
+      'date': null,
+      'total': this.orderNote.total
+    };
+
+    alert(this.orderNote.provider_id);
+    alert(this.orderNote.date);
+    alert(this.orderNote.total);
+
+    this.orderNotesService.save(this.orderNote).subscribe((data) => {
+      alert('Nota de pedido creada con éxito');
+      console.log(data);
+    }, (error) => {
+      console.log(error);
+      alert('Ocurrió un error');
+    });
   }
 }

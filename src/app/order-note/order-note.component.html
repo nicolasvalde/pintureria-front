@@ -4,72 +4,99 @@
   </div>
 </nav>
 
-<p-dropdown [options]="providers" [(ngModel)]="selectedProvider" optionLabel="razon_social"
-            placeholder="Seleccione un proveedor" [filter]="true"></p-dropdown>
+<!-- Selección proveedor -->
+<div class="ui-g-12 ui-md-4">
+  <p-dropdown [options]="providers" [(ngModel)]="selectedProvider" optionLabel="razon_social"
+              placeholder="Seleccione un proveedor" [filter]="true"></p-dropdown>
+</div>
 
-<p-accordion [multiple]="true">
+<!-- Accordion con oficial y presupuesto -->
+<div class="ui-g-12 ui-md-12">
+  <p-accordion [multiple]="true">
 
-  <!-- Oficial -->
-  <p-accordionTab header="Oficial">
-    <p-table [value]="onDetailsOficial">
-      <ng-template pTemplate="header">
-        <tr>
-          <th>Código Producto</th>
-          <th>Cantidad</th>
-          <th>Presentación</th>
-          <th>Nombre Producto</th>
-          <th>Precio unitario</th>
-          <th>Precio Total</th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-onDetail>
-        <tr>
-          <td>{{onDetail.product_code}}</td>
-          <td>{{onDetail.quantity}}</td>
-          <td>Acá la medida</td>
-          <td>Acá el nombre (¿rubro?)</td>
-          <td>$ {{onDetail.price}}</td>
-          <td>$ {{onDetail.quantity * onDetail.price}}</td>
-        </tr>
-      </ng-template>
-    </p-table>
-    <br>
-    <button class="btn btn-primary" style="margin-bottom: 10px" (click)="showDialogToAdd(true)">Agregar producto
-    </button>
-  </p-accordionTab>
+    <!-- Oficial -->
+    <p-accordionTab header="Oficial">
+      <p-table [value]="onDetailsOficial">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Código Producto</th>
+            <th>Cantidad</th>
+            <th>Presentación</th>
+            <th>Nombre Producto</th>
+            <th>Precio unitario</th>
+            <th>Precio Total</th>
+            <th></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-onDetail>
+          <tr>
+            <td>{{onDetail.product_code}}</td>
+            <td>{{onDetail.quantity}}</td>
+            <td>Acá la medida</td>
+            <td>Acá el nombre (¿rubro?)</td>
+            <td>$ {{onDetail.price}}</td>
+            <td>$ {{onDetail.quantity * onDetail.price}}</td>
+            <td>
+              <button type="button" class="btn btn-outline-danger btn-sm">Eliminar</button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <br>
+      <button class="btn btn-primary" style="margin-bottom: 10px" (click)="showDialogToAdd(true)">Agregar producto
+      </button>
+    </p-accordionTab>
 
-  <!-- Presupuesto -->
-  <p-accordionTab header="Presupuesto">
-    <p-table [value]="onDetailsPresupuesto">
-      <ng-template pTemplate="header">
-        <tr>
-          <th>Código Producto</th>
-          <th>Cantidad</th>
-          <th>Presentación</th>
-          <th>Nombre Producto</th>
-          <th>Precio unitario</th>
-          <th>Precio Total</th>
-        </tr>
-      </ng-template>
+    <!-- Presupuesto -->
+    <p-accordionTab header="Presupuesto">
+      <p-table [value]="onDetailsPresupuesto">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Código Producto</th>
+            <th>Cantidad</th>
+            <th>Presentación</th>
+            <th>Nombre Producto</th>
+            <th>Precio unitario</th>
+            <th>Precio Total</th>
+            <th></th>
+          </tr>
+        </ng-template>
 
-      <ng-template pTemplate="body" let-onDetail>
-        <tr>
-          <td>{{onDetail.product_code}}</td>
-          <td>{{onDetail.quantity}}</td>
-          <td>Acá la medida</td>
-          <td>Acá el nombre (¿rubro?)</td>
-          <td>$ {{onDetail.price}}</td>
-          <td>$ {{onDetail.quantity * onDetail.price}}</td>
-        </tr>
-      </ng-template>
-    </p-table>
-    <br>
-    <button class="btn btn-primary" style="margin-bottom: 10px" (click)="showDialogToAdd(false)">Agregar producto
-    </button>
-  </p-accordionTab>
+        <ng-template pTemplate="body" let-onDetail>
+          <tr>
+            <td>{{onDetail.product_code}}</td>
+            <td>{{onDetail.quantity}}</td>
+            <td>Acá la medida</td>
+            <td>Acá el nombre (¿rubro?)</td>
+            <td>$ {{onDetail.price}}</td>
+            <td>$ {{onDetail.quantity * onDetail.price}}</td>
+            <td>
+              <button type="button" class="btn btn-outline-danger btn-sm">Eliminar</button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <br>
+      <button class="btn btn-primary" style="margin-bottom: 10px" (click)="showDialogToAdd(false)">Agregar producto
+      </button>
+    </p-accordionTab>
 
-</p-accordion>
+  </p-accordion>
+</div>
 
+<!-- Total -->
+<div class="ui-g-12 ui-md-4">
+  <div class="ui-inputgroup">
+    <span class="ui-inputgroup-addon">$</span>
+    <input type="text" pInputText placeholder="Total" [(ngModel)]="orderNote.total" disabled="true">
+  </div>
+  <div>
+    <button class="btn btn-primary" style="margin-bottom: 10px" (click)="saveOrderNote()">Confirmar pedido</button>
+  </div>
+</div>
+
+
+<!-- Pop-up selección producto -->
 <p-dialog header="Seleccionar producto" [(visible)]="display" [modal]="true" class="ui-g-12"
           [height]="500" [width]="600" [resizable]="false">
   <div>
@@ -105,3 +132,5 @@
     <button class="btn btn-primary" style="margin-bottom: 10px" (click)="save()">Aceptar</button>
   </div>
 </p-dialog>
+
+

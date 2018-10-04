@@ -85,7 +85,7 @@ export class AppComponent {
           {
             label: 'Listar notas de pedido',
             icon: 'pi pi-fw pi-external-link',
-            // routerLink: '/providers',
+            routerLink: '/orderNotes',
           },
         ]
       }, {

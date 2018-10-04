@@ -8,6 +8,7 @@ import {HomeComponent} from './home/home.component';
 import {PanelMenuModule} from 'primeng/panelmenu';
 import {FormsModule} from '@angular/forms';
 import {TableModule} from 'primeng/table';
+import {DataScrollerModule} from 'primeng/datascroller';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AccordionModule, MenubarModule, MenuItem, MenuModule} from 'primeng/primeng';
 import {DropdownModule} from 'primeng/dropdown';
@@ -111,7 +112,8 @@ const routes: Route[] = [
     DropdownModule,
     ScrollPanelModule,
     DialogModule,
-    ListboxModule
+    ListboxModule,
+    DataScrollerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

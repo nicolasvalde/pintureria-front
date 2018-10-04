@@ -4,7 +4,7 @@
       CLIENTES
     </div>
   </nav>
-  <p-table [value]="clients">
+  <p-table [value]="clients" [scrollable]="true" scrollHeight="700px">
     <ng-template pTemplate="header">
       <tr>
         <th>Nombre</th>
@@ -12,6 +12,7 @@
         <th>CUIT</th>
         <th>Teléfono</th>
         <th>e-Mail</th>
+        <th></th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-client>
