@@ -12,4 +12,7 @@ export class OrderNotesDetailComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSave() {
+
+  }
 }

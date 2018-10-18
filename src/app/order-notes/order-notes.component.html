@@ -1,3 +1,23 @@
-<p>
-  order-notes works!
-</p>
+<div>
+  <nav class="navbar navbar-dark bg-primary" style="margin-bottom: 10px">
+    <div class="navbar navbar-brand">
+      NOTAS DE PEDIDO
+    </div>
+  </nav>
+  <p-table [value]="orderNotes" [scrollable]="true" scrollHeight="700px">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Proveedor</th>
+        <th>Fecha</th>
+        <th>Total</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-orderNote>
+      <tr>
+        <td>{{orderNote.provider}}</td>
+        <td>{{orderNote.date}}</td>
+        <td>{{orderNote.total}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

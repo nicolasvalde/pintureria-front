@@ -24,6 +24,7 @@ export class OrderNoteComponent implements OnInit {
   };
 
   onDetail: OrderNoteDetail = {
+    'order_note_id': null,
     'type': null,
     'price': null,
     'quantity': null,
@@ -53,7 +54,6 @@ export class OrderNoteComponent implements OnInit {
   getProviders() {
     this.providersService.get().subscribe((data: SelectItem[]) => {
       this.providers = data;
-      console.log(data);
     }, (error) => {
       console.log(error);
       alert('Se ha producido un error');
@@ -63,7 +63,6 @@ export class OrderNoteComponent implements OnInit {
   getProducts() {
     this.productService.get().subscribe((data: Product[]) => {
       this.products = data;
-      console.log(data);
     }, (error) => {
       console.log(error);
       alert('Se ha producido un error');
@@ -74,14 +73,15 @@ export class OrderNoteComponent implements OnInit {
     this.display = true;
 
     this.onDetail = {
+      'order_note_id': null,
       'type': type,
       'price': null,
       'quantity': null,
-      'product_code': null,
+      'product_code': null
     };
   }
 
-  save() {
+  add() {
     if (this.onDetail.type === true) {
       this.onDetailsOficial.push(this.onDetail);
     } else {
@@ -90,6 +90,7 @@ export class OrderNoteComponent implements OnInit {
     console.log(this.onDetail);
 
     this.onDetail = {
+      'order_note_id': null,
       'type': null,
       'price': null,
       'quantity': null,
@@ -107,12 +108,10 @@ export class OrderNoteComponent implements OnInit {
     let total = 0;
 
     this.onDetailsOficial.forEach(function (value) {
-      console.log(value);
       total += ((value.price.valueOf()) * (value.quantity.valueOf()));
     });
 
     this.onDetailsPresupuesto.forEach(function (value) {
-      console.log(value);
       total += ((value.price.valueOf()) * (value.quantity.valueOf()));
     });
 
@@ -121,22 +120,30 @@ export class OrderNoteComponent implements OnInit {
 
   saveOrderNote() {
 
+    const date = new Date();
+
     this.orderNote = {
       'provider_id': this.selectedProvider.id,
-      'date': null,
+      'date': date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2),
       'total': this.orderNote.total
     };
-
-    alert(this.orderNote.provider_id);
-    alert(this.orderNote.date);
-    alert(this.orderNote.total);
 
     this.orderNotesService.save(this.orderNote).subscribe((data) => {
       alert('Nota de pedido creada con éxito');
       console.log(data);
     }, (error) => {
       console.log(error);
-      alert('Ocurrió un error');
+      alert('Ocurrió un error en la nota');
+    });
+
+    this.onDetailsService.save(this.onDetailsOficial).subscribe((data) => {
+      alert('Detalles oficiales guardados con éxito');
+      console.log(data);
+    }, (error) => {
+      console.log(error);
+      alert('Ocurrió un error en los detalles');
     });
   }
+
+
 }
